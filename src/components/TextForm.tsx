@@ -9,20 +9,35 @@ const TextForm = () => {
 		if (!textRef.current?.value) {
 			return;
 		}
-		let inputText = textRef.current.value.replace(/\[/g, "{");
-		inputText = inputText.replace(/\]/g, "}");
-		const arr = inputText.split("\n");
-		let newArr = arr.map((element: string) => {
-			return "*" + element;
+		let inputText = textRef.current.value
+			.replace(/\[/g, "{")
+			.replace(/\]/g, "}");
+		let formattedTexts = inputText.split("\n");
+		formattedTexts = formattedTexts.map((eachLine: string) => {
+			return "*" + eachLine;
 		});
-		setText([...newArr]);
+		setText([...formattedTexts]);
 	};
 
 	return (
-		<div>
+		<div className="flex items-center flex-col mt-1">
 			<form onSubmit={convertText}>
-				<textarea ref={textRef} cols={90}></textarea>
-				<button>Convert</button>
+				<div className="flex flex-col items-center gap-2">
+					<label className="block text-sm font-medium text-gray-900 dark:text-white">
+						Enter Your Api Response
+					</label>
+					<textarea
+						className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+						ref={textRef}
+						cols={90}
+						rows={15}
+					></textarea>
+					<div>
+						<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+							Convert
+						</button>
+					</div>
+				</div>
 			</form>
 			<div style={{ margin: "3rem" }}>
 				{text.map((text, index) => (
