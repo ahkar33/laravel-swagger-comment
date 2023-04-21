@@ -56,10 +56,10 @@ const TextForm = () => {
 			</form>
 			<div style={{margin: '3rem'}}>
 				{text.map((text, index) => (
-					<span key={index}>
+					<pre key={index}>
 						<span>{text}</span>
 						<br />
-					</span>
+					</pre>
 				))}
 			</div>
 		</div>
