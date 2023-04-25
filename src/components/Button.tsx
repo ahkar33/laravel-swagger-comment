@@ -1,18 +1,15 @@
 type ButtonProps = {
-	bgColor?: string;
-	hoverBgColor?: string;
-	textColor?: string;
-  text: string;
-  onClick?: () => void
+	text: string;
+	onClick?: () => void;
 };
 
-const Button = ({ bgColor, hoverBgColor, textColor, text,onClick }: ButtonProps) => {
+const Button = ({ text, onClick }: ButtonProps) => {
 	return (
 		<button
-			className={`bg-${bgColor ?? "blue-500"} hover:bg-${hoverBgColor ?? "blue-700"} text-${textColor ?? "white"} font-bold py-2 px-4 my-2 rounded`}
-      onClick={onClick}
+			className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded`}
+			onClick={onClick}
 		>
-      {text}
+			{text}
 		</button>
 	);
 };
